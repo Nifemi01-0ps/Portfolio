@@ -1,4 +1,4 @@
-import styles from './SocialIcons.module.css';
+import styles from '../styles/SocialIcons.module.css';
 
 //  SVGs path 
 const ICONS = {
