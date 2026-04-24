@@ -1,0 +1,97 @@
+.section {
+  background: var(--off);
+  border-top: var(--border);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px clamp(16px, 4vw, 48px);
+}
+
+/* HEADER */
+.header {
+  padding-bottom: 40px;
+  border-bottom: var(--border);
+  margin-bottom: 56px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header p {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.header h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.subText {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 220px;
+  text-align: right;
+  line-height: 1.7;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(clamp(200px, 40vw, 340px), 1fr)
+  );
+
+  border: var(--border);
+  border-right: none;
+  border-bottom: none;
+}
+
+/* CARD */
+.card {
+  padding: clamp(16px, 3vw, 28px) clamp(16px, 3vw, 32px);
+  border-right: var(--border);
+  border-bottom: var(--border);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.skillName {
+  font-size: clamp(13px, 1.8vw, 14px);
+  font-weight: 500;
+}
+
+.percent {
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* PROGRESS BAR */
+.bar {
+  height: 2px;
+  background: var(--g200);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--gold);
+  width: 0%;
+}
