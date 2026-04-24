@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+/* ICON BASE */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: var(--icon-size);
+  height: var(--icon-size);
+
+  color: var(--icon-color);
+  border-radius: 50%;
+
+  text-decoration: none;
+  flex-shrink: 0;
+
+  transition: 
+    color 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+/* BORDER OPTION */
+.withBorder {
+  border: 1px solid var(--icon-color);
+}
+.icon:hover {
+  color: var(--icon-hover);
+  border-color: var(--icon-hover);
+  transform: translateY(-2px);
+}
