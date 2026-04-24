@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import styles from './Hero.module.css';
+import styles from '../styles/Hero.module.css';
 
 const ROLES = [
   'Frontend Developer',
