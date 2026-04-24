@@ -1,0 +1,169 @@
+.hero {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.4) 55%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 760px;
+
+  padding: calc(var(--util-h) + var(--nav-h) + 16px)
+    clamp(16px, 5vw, 48px)
+    clamp(28px, 5vw, 52px);
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.name {
+  font-family: var(--serif);
+  font-size: clamp(42px, 9vw, 110px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.roleBox {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+  height: 34px;
+}
+
+.roleText {
+  font-family: var(--sans);
+  font-size: clamp(13px, 2.2vw, 20px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cursor {
+  font-size: clamp(13px, 2.2vw, 20px);
+  color: var(--gold);
+  animation: blink 1s step-end infinite;
+}
+
+.subtitle {
+  font-family: var(--sans);
+  font-size: clamp(12px, 1.6vw, 15px);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  max-width: min(440px, 90vw);
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* MAGNETIC BUTTON */
+.magneticBtn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  background: var(--gold);
+  color: var(--black);
+
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+
+  transition: background 0.2s, transform 0.35s var(--ease);
+  flex-shrink: 0;
+}
+
+/* CONTACT BUTTON */
+.contactBtn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  background: transparent;
+  color: var(--white);
+
+  padding: 14px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: border-color 0.2s;
+  flex-shrink: 0;
+}
+
+/* SCROLL INDICATOR */
+.scrollIndicator {
+  position: absolute;
+  bottom: 32px;
+  right: 48px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.4)
+  );
+}
+
+/* ANIMATION */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .scrollIndicator {
+    right: 16px;
+    bottom: 16px;
+  }
+}
