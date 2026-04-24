@@ -1,0 +1,24 @@
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+  border: 1px solid var(--g200);
+  background: transparent;
+  color: var(--muted);
+
+  cursor: pointer;
+  flex-shrink: 0;
+
+  transition: border-color 0.2s, color 0.2s, transform 0.3s;
+}
+
+.toggleBtn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  transform: rotate(20deg) scale(1.1);
+}
