@@ -1,70 +1,58 @@
-import { useState } from 'react';
-import styles from '../styles/Contact.module.css';
+import { useState } from 'react'
+import styles from '../styles/Contact.module.css'
 
-const FORMSPREE_URL = 'https://formspree.io/f/xpqkkvjo';
+const FORMSPREE_URL = 'https://formspree.io/f/xpqkkvjo'
+
+const CONTACT_ITEMS = [
+  { l:'Email',  v:'raphaeledafesnr@gmail.com',  h:'mailto:raphaeledafesnr@gmail.com' },
+  { l:'Phone',  v:'+234 903 448 3597',          h:'tel:+2349034483597' },
+  { l:'GitHub', v:'github.com/nifemi01-0ps',    h:'https://github.com/nifemi01-0ps' },
+]
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState('idle');
+  const [form,   setForm]   = useState({ name:'', email:'', message:'' })
+  const [status, setStatus] = useState('idle')
 
-  const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
+  const set = (k, v) => setForm(f => ({ ...f, [k]: v }))
 
   const handleSubmit = async e => {
-    e.preventDefault();
-    setStatus('sending');
-
+    e.preventDefault()
+    setStatus('sending')
     try {
       const res = await fetch(FORMSPREE_URL, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
+        headers: { 'Content-Type':'application/json', 'Accept':'application/json' },
         body: JSON.stringify(form),
-      });
+      })
+      if (res.ok) { setStatus('sent'); setForm({ name:'', email:'', message:'' }) }
+      else setStatus('error')
+    } catch { setStatus('error') }
+  }
 
-      if (res.ok) {
-        setStatus('sent');
-        setForm({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
-  };
-
-  const disabled =
-    status === 'sending' ||
-    !form.name ||
-    !form.email ||
-    !form.message;
+  const disabled = status === 'sending' || !form.name || !form.email || !form.message
 
   return (
     <section id="contact" className={styles.section}>
-      <div className={styles.container}>
+      <div className={styles.inner}>
 
-        {/* Header */}
-        <div className={styles.header}>
-          <p className={styles.label}>Get In Touch</p>
-          <h2 className={styles.title}>Let's build something.</h2>
+        {/* ── Heading ── */}
+        <div className={styles.heading}>
+          <p className={`reveal ${styles.label}`}>Get In Touch</p>
+          <h2 className={`reveal d1 ${styles.title}`}>Let's build something.</h2>
         </div>
 
+        {/* ── Two-column grid ── */}
         <div className={styles.grid}>
 
-          {/* Left Info */}
-          <div className={styles.info}>
-            <p className={styles.desc}>
+          {/* Left — contact info */}
+          <div className="reveal">
+            <p className={styles.intro}>
               Open to freelance projects, full-time frontend roles, and interesting collaborations.
               I'll reply within 24 hours.
             </p>
 
             <div className={styles.contactList}>
-              {[
-                { l: 'Email', v: 'raphaeledafesnr@gmail.com', h: 'mailto:raphaeledafesnr@gmail.com' },
-                { l: 'Phone', v: '+234 903 448 3597', h: 'tel:+2349034483597' },
-                { l: 'GitHub', v: 'github.com/nifemi01-0ps', h: 'https://github.com/nifemi01-0ps' },
-              ].map(({ l, v, h }) => (
+              {CONTACT_ITEMS.map(({ l, v, h }) => (
                 <div key={l} className={styles.contactItem}>
                   <p className={styles.contactLabel}>{l}</p>
                   <a
@@ -80,61 +68,50 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Form */}
-          <div className={styles.formBox}>
-
+          {/* Right — form */}
+          <div className="reveal d2">
             {status === 'sent' ? (
-              <div className={styles.success}>
-                <span className={styles.check}>✓</span>
+              <div className={styles.successBox}>
+                <span className={styles.successIcon}>✓</span>
                 <h3 className={styles.successTitle}>Message sent!</h3>
-                <p className={styles.successText}>
-                  Thanks for reaching out. I'll reply soon.
-                </p>
-
-                <button
-                  onClick={() => setStatus('idle')}
-                  className={styles.secondaryBtn}
-                >
+                <p className={styles.successText}>Thanks for reaching out. I'll reply soon.</p>
+                <button onClick={() => setStatus('idle')} className={styles.sendAgainBtn}>
                   Send another
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className={styles.form} noValidate>
+              <form onSubmit={handleSubmit} noValidate className={styles.form}>
 
-                <div className={styles.row}>
+                <div className={styles.formRow}>
                   <div>
-                    <label>Name</label>
+                    <label className={styles.fieldLabel} htmlFor="name">Name</label>
                     <input
-                      type="text"
-                      value={form.name}
-                      onChange={e => set('name', e.target.value)}
-                      placeholder="Your name"
+                      id="name" type="text" required placeholder="Your name"
+                      value={form.name} onChange={e => set('name', e.target.value)}
+                      className={styles.input}
                     />
                   </div>
-
                   <div>
-                    <label>Email</label>
+                    <label className={styles.fieldLabel} htmlFor="email">Email</label>
                     <input
-                      type="email"
-                      value={form.email}
-                      onChange={e => set('email', e.target.value)}
-                      placeholder="your@email.com"
+                      id="email" type="email" required placeholder="your@email.com"
+                      value={form.email} onChange={e => set('email', e.target.value)}
+                      className={styles.input}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label>Message</label>
+                  <label className={styles.fieldLabel} htmlFor="message">Message</label>
                   <textarea
-                    rows={5}
-                    value={form.message}
-                    onChange={e => set('message', e.target.value)}
-                    placeholder="Tell me about your project..."
+                    id="message" required rows={5} placeholder="Tell me about your project..."
+                    value={form.message} onChange={e => set('message', e.target.value)}
+                    className={styles.input}
                   />
                 </div>
 
                 {status === 'error' && (
-                  <p className={styles.error}>
+                  <p className={styles.errorMsg}>
                     Something went wrong — please email me directly.
                   </p>
                 )}
@@ -142,18 +119,19 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={disabled}
-                  className={`${styles.submitBtn} ${
-                    disabled ? styles.disabled : ''
-                  }`}
+                  className={`${styles.submitBtn} ${disabled ? styles.submitBtnDisabled : ''}`}
                 >
-                  {status === 'sending' ? 'Sending…' : 'Send Message →'}
+                  {status === 'sending'
+                    ? <><span className={styles.spinner} />Sending…</>
+                    : 'Send Message →'}
                 </button>
+
               </form>
             )}
-
           </div>
+
         </div>
       </div>
     </section>
-  );
+  )
 }
