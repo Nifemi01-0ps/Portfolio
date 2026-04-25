@@ -38,16 +38,14 @@ export default function SocialIcons({
   links,
   color = 'rgba(255,255,255,0.5)',
   hover = 'var(--gold)',
-  size = 32,
+  size = 10,
   gap = '12px',
   showBorder = false,
 }) {
   return (
     <div
-      className="wrapper"
+      className={styles.wrapper}
       style={{
-        display: 'flex',
-        alignItems: 'center',
         gap,
         '--icon-color': color,
         '--icon-hover': hover,
@@ -62,7 +60,7 @@ export default function SocialIcons({
           rel="noopener noreferrer"
           aria-label={label}
           title={label}
-          className={`icon ${showBorder ? 'withBorder' : ''}`}
+          className={`${styles.icon} ${showBorder ? styles.withBorder : ''}`}
         >
           {ICONS[icon]}
         </a>
