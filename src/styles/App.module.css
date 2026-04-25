@@ -1,0 +1,40 @@
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: var(--gold);
+  z-index: 9999;
+  transition: width 0.2s linear;
+}
+
+/* Fixed top header (UtilityBar + Navbar) */
+.fixedHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: calc(var(--util-h) + var(--nav-h));
+
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hero layer behind everything */
+.heroLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Scroll content layer */
+.scrollLayer {
+  position: relative;
+  z-index: 1;
+  margin-top: 100vh;
+}
