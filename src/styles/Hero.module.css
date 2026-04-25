@@ -5,7 +5,6 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -25,13 +24,13 @@
 .content {
   position: relative;
   z-index: 1;
-
   width: 100%;
   max-width: 760px;
-
-  padding: calc(var(--util-h) + var(--nav-h) + 16px)
-    clamp(16px, 5vw, 48px)
-    clamp(28px, 5vw, 52px);
+  /* FIX: split into 4 separate padding properties — no shorthand confusion */
+  padding-top: calc(var(--util-h) + var(--nav-h) + 16px);
+  padding-right: clamp(16px, 5vw, 48px);
+  padding-bottom: clamp(28px, 5vw, 52px);
+  padding-left: clamp(16px, 5vw, 48px);
 }
 
 .tag {
@@ -47,7 +46,7 @@
   font-family: var(--serif);
   font-size: clamp(42px, 9vw, 110px);
   font-weight: 900;
-  color: var(--white);
+  color: white;
   line-height: 0.95;
   letter-spacing: -0.02em;
   margin-bottom: 12px;
@@ -58,7 +57,7 @@
   align-items: center;
   gap: 4px;
   margin-bottom: 16px;
-  height: 34px;
+  height: clamp(22px, 3.5vw, 34px);
 }
 
 .roleText {
@@ -90,54 +89,44 @@
   flex-wrap: wrap;
 }
 
-/* MAGNETIC BUTTON */
 .magneticBtn {
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: clamp(11px, 1.5vw, 13px);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-
   background: var(--gold);
   color: var(--black);
-
-  padding: 14px 32px;
+  padding: clamp(10px, 2vw, 14px) clamp(20px, 3vw, 32px);
   border: none;
   cursor: pointer;
-
   transition: background 0.2s, transform 0.35s var(--ease);
   flex-shrink: 0;
 }
 
-/* CONTACT BUTTON */
 .contactBtn {
   font-family: var(--sans);
-  font-size: 13px;
+  font-size: clamp(11px, 1.5vw, 13px);
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-
   background: transparent;
   color: var(--white);
-
-  padding: 14px 32px;
+  padding: clamp(10px, 2vw, 14px) clamp(20px, 3vw, 32px);
   border: 1px solid rgba(255, 255, 255, 0.35);
   cursor: pointer;
   transition: border-color 0.2s;
   flex-shrink: 0;
 }
 
-/* SCROLL INDICATOR */
 .scrollIndicator {
   position: absolute;
-  bottom: 32px;
-  right: 48px;
-
+  bottom: clamp(16px, 3vh, 32px);
+  right: clamp(16px, 4vw, 48px);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-
   color: rgba(255, 255, 255, 0.3);
   font-size: 9px;
   letter-spacing: 0.15em;
@@ -147,23 +136,10 @@
 .scrollLine {
   width: 1px;
   height: 32px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255, 255, 255, 0.4)
-  );
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.4));
 }
 
-/* ANIMATION */
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-/* RESPONSIVE */
-@media (max-width: 640px) {
-  .scrollIndicator {
-    right: 16px;
-    bottom: 16px;
-  }
+  50%       { opacity: 0; }
 }
