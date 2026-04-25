@@ -4,13 +4,12 @@ import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import Work from './components/Work.jsx'
 import About from './components/About.jsx'
-import Skills from './components/Skills.jsx'
+import Skills from './components/Skill.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import Modal from './components/Modal.jsx'
 import { useModal } from './hooks/useModal.js'
-import styles from './App.module.css'
-
+import styles from "./styles/App.module.css";
 export default function App() {
   const { modal, openModal, closeModal } = useModal()
 
