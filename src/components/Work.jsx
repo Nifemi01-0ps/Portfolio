@@ -209,7 +209,7 @@ export default function Work({ openModal }) {
       <div className={styles.header}>
         <div>
           <p className={`reveal ${styles.sectionLabel}`}>Selected Work</p>
-          <h2 className={`reveal d1 ${styles.sectionTitle} static-white`}>Projects I've Shipped</h2>
+          <h2 className={`reveal d1 ${styles.sectionTitle} `}>Projects I've Shipped</h2>
         </div>
         <p className={`reveal d2 ${styles.hint}`}>Swipe · Arrow keys · Click to explore</p>
       </div>
