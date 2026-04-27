@@ -186,7 +186,7 @@ export default function About() {
                   Real bugs and challenges I debugged across my projects - click to expand.
                 </p>
 
-                <div className={styles.problemBlock}>
+                <div className={styles.problemContainer}>
                   {PROBLEMS.map(project => (
                     <ProblemBlock key={project.title} project={project} globalVisible={problemsVisible}/>
                   ))}
