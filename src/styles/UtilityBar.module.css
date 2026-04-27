@@ -1,6 +1,6 @@
 .bar {
   height: var(--util-h);
-  background: var(--black);
+  background: #0a0a0a;
 
   display: flex;
   align-items: center;
