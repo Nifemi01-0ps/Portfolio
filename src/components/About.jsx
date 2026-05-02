@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import styles from '../styles/About.module.css';
 import aboutImg from "../assets/hero.jpg";
+import resume from "../assets/Frontend Resume (1).pdf";
 
 const PARAS = [
   "I'm Nifemi, a frontend developer based in Nigeria. I specialise in React and modern CSS, building interfaces that are fast, accessible, and genuinely enjoyable to use. I've shipped projects ranging from games to e-commerce platforms, always learning."];
@@ -205,7 +206,7 @@ export default function About() {
               </div>
 
               {visibleParas >= 3 && (
-                <a href="/resume.pdf" download className={styles.cvBtn}>
+                <a href={resume} download className={styles.cvBtn}>
                   Download CV ↓
                 </a>
               )}
